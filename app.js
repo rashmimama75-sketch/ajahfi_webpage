@@ -98,6 +98,35 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+    // Add touch swipe support for mobile
+    const sliderContainer = document.querySelector('.slider-container');
+    if (sliderContainer) {
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      sliderContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      
+      sliderContainer.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, { passive: true });
+      
+      function handleSwipe() {
+        const swipeThreshold = 50; // minimum distance in px
+        if (touchEndX < touchStartX - swipeThreshold) {
+          // Swiped left, show next slide
+          currentIdx = (currentIdx + 1) % slides.length;
+          updateSlider();
+        } else if (touchEndX > touchStartX + swipeThreshold) {
+          // Swiped right, show prev slide
+          currentIdx = (currentIdx - 1 + slides.length) % slides.length;
+          updateSlider();
+        }
+      }
+    }
+
     // Initialize
     updateSlider();
   }
