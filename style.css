@@ -1569,7 +1569,11 @@ footer {
   }
 
   .step-number {
-    right: 40%;
+    position: relative;
+    right: auto;
+    left: auto;
+    margin-bottom: -16px;
+    z-index: 5;
   }
 
   .estimator-wrapper {
@@ -1614,6 +1618,10 @@ footer {
     font-size: 2rem;
   }
 
+  .showcase-slider {
+    padding: 30px 15px;
+  }
+
   .slider-container {
     gap: 10px;
   }
@@ -1625,5 +1633,24 @@ footer {
 
   .slider-arrow {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .mockup-wrapper {
+    width: 270px;
+    height: 540px;
+  }
+  
+  .phone-frame {
+    border-width: 8px;
+    border-radius: 30px;
+  }
+  
+  .phone-notch {
+    width: 120px;
+    height: 20px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
   }
 }
